@@ -1,0 +1,14 @@
+upstream backend {
+		server localhost:6061;
+		server localhost:6062;
+		server localhost:6063;
+}
+
+server {
+		listen 80;
+		server_name app-lb.grindnakama.xyz;
+		
+		location / {
+			proxy_pass http://backend;
+		}
+}
